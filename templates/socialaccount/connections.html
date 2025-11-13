@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Підключені акаунти - SpeakMate{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <h2 class="card-title mb-4">
+                    <i class="bi bi-link text-primary"></i> Підключені акаунти
+                </h2>
+                
+                {% if form.accounts %}
+                    <p class="mb-4">Ви можете відключити свої соціальні акаунти тут:</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-x-circle"></i> Відключити
+                        </button>
+                    </form>
+                {% else %}
+                    <p class="text-muted mb-4">У вас поки немає підключених соціальних акаунтів.</p>
+                {% endif %}
+                
+                <hr class="my-4">
+                
+                <h4 class="mb-3">Підключити акаунт:</h4>
+                <a href="{% url 'google_login' %}" class="btn btn-outline-danger">
+                    <i class="bi bi-google"></i> Підключити Google
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
