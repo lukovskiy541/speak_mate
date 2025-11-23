@@ -1,88 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Головна - SpeakMate{% endblock %}
-
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-lg-8 text-center">
-        <h1 class="display-4 mb-4">
-            <i class="bi bi-chat-heart text-primary"></i> Ласкаво просимо до SpeakMate
-        </h1>
-        <p class="lead mb-4">
-            Знайдіть ідеального мовного партнера та практикуйте мови разом!
-        </p>
-        
-        {% if user.is_authenticated %}
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title mb-4">Привіт, {{ user.get_full_name }}!</h3>
-                    <p class="card-text">Готові почати практику?</p>
-                    <a href="{% url 'profile' %}" class="btn btn-primary btn-lg">
-                        <i class="bi bi-person-circle"></i> Мій профіль
-                    </a>
-                </div>
-            </div>
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Welcome to SpeakMate</h1>
+        <p class="col-md-8 fs-4">Find your perfect language partner today. Practice speaking, learn new cultures, and
+            make friends around the world.</p>
+        {% if not user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" href="{% url 'account_signup' %}" role="button">Get Started</a>
         {% else %}
-            <div class="row g-3 justify-content-center">
-                <div class="col-md-6">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                <i class="bi bi-person-plus text-success"></i> Реєстрація
-                            </h3>
-                            <p class="card-text">Створіть акаунт та почніть шукати партнерів</p>
-                            <a href="{% url 'signup' %}" class="btn btn-success btn-lg">
-                                Зареєструватися
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                <i class="bi bi-box-arrow-in-right text-primary"></i> Вхід
-                            </h3>
-                            <p class="card-text">Вже маєте акаунт? Увійдіть зараз</p>
-                            <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">
-                                Увійти
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <a class="btn btn-primary btn-lg" href="{% url 'profile' %}" role="button">Go to Profile</a>
         {% endif %}
-
-        <div class="row mt-5 g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body">
-                        <i class="bi bi-search display-4 text-primary"></i>
-                        <h4 class="mt-3">Швидкий підбір</h4>
-                        <p>Знайдіть партнерів за рівнем, цілями та графіком</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body">
-                        <i class="bi bi-calendar-check display-4 text-success"></i>
-                        <h4 class="mt-3">Планування сесій</h4>
-                        <p>Автоматичне створення розкладу зустрічей</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body">
-                        <i class="bi bi-graph-up display-4 text-info"></i>
-                        <h4 class="mt-3">Трекінг прогресу</h4>
-                        <p>Відстежуйте свій розвиток та отримуйте зворотний зв'язок</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 {% endblock %}
-
