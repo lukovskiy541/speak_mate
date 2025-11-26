@@ -9,12 +9,12 @@
 ```mermaid
 graph TD
     User[Користувач] -->|HTTP Request| URL[URL Dispatcher]
-    URL -->|Routing| View[View (Business Logic)]
+    URL -->|Routing| View[View - Business Logic]
     
     subgraph MVT Architecture
-        View <-->|Read/Write| Model[Model (Data Layer)]
+        View <-->|Read/Write| Model[Model - Data Layer]
         Model <-->|SQL| DB[(Database)]
-        View -->|Context| Template[Template (Presentation)]
+        View -->|Context| Template[Template - Presentation]
     end
     
     Template -->|HTML Response| User
